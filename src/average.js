@@ -11,6 +11,48 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+const checkIsEmpty = (arr) => {
+  let state = false;
+  if (arr.length === 0) {
+    state = true;
+  }
+  return state;
+};
+
+const checkIsNumber = (arr) => {
+  let state = true;
+  arr.forEach((value) => {
+    if (typeof value !== 'number') {
+      state = false;
+    }
+  });
+  return state;
+};
+
+const checkArr = (arr) => {
+  const isEmpty = checkIsEmpty(arr);
+  const isNumber = checkIsNumber(arr);
+
+  if (isNumber && !isEmpty) {
+    return true;
+  }
+  return false;
+};
+
+const average = (arr) => {
+  const checkedArr = checkArr(arr);
+  let sumArr = 0;
+
+  if (checkedArr) {
+    arr.forEach((value) => {
+      sumArr += value;
+    });
+
+    const roundSumArr = Math.round(sumArr / arr.length);
+    return roundSumArr;
+  }
+
+  return undefined;
+};
 
 module.exports = average;
