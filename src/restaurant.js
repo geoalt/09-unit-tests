@@ -101,7 +101,7 @@ const ordered = (item) => restaurant.consumption.push(item);
 const sumFoodsAndDrinks = () => {
   let sum = 0;
   const consumed = restaurant.consumption;
-  const menuPrices = Object.values(restaurant.fetchMenu);
+  const menuPrices = Object.values(restaurant.fetchMenu).flat();
 
   consumed.forEach((order) => {
     for (let item = 0; item < menuPrices.length; item += 1) {
@@ -123,13 +123,15 @@ const createMenu = (obj) => {
   return restaurant;
 };
 
-createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
+createMenu();
 
-restaurant.order('coxinha');
-restaurant.order('agua');
-restaurant.order('coxinha');
-console.log(restaurant.fetchMenu);
-console.log(restaurant.pay());
-console.log(restaurant);
+// createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
+
+// restaurant.order('coxinha');
+// restaurant.order('agua');
+// restaurant.order('coxinha');
+// console.log(restaurant.fetchMenu);
+// console.log(restaurant.pay());
+// console.log(restaurant);
 
 module.exports = createMenu;
