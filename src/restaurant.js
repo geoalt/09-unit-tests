@@ -125,12 +125,12 @@ const createMenu = (obj) => {
 
 createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
 
-// restaurant.order('coxinha');
-// restaurant.order('coxinha');
-// restaurant.order('sopa');
-// restaurant.order('cerveja');
-// console.log(restaurant.fetchMenu);
-// console.log(restaurant.pay());
-// console.log(restaurant);
+restaurant.order('coxinha');
+restaurant.order('coxinha');
+restaurant.order('sopa');
+restaurant.order('cerveja');
+console.log(restaurant.fetchMenu);
+console.log(restaurant.pay());
+console.log(restaurant);
 
 module.exports = createMenu;
