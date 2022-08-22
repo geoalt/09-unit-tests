@@ -101,7 +101,7 @@ const ordered = (item) => restaurant.consumption.push(item);
 const sumFoodsAndDrinks = () => {
   let sum = 0;
   const consumed = restaurant.consumption;
-  const menuPrices = restaurant.fetchMenu;
+  const menuPrices = Object.values(restaurant.fetchMenu);
 
   consumed.forEach((order) => {
     for (let item in menuPrices) {
