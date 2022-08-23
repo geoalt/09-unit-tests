@@ -97,11 +97,11 @@ const createMenu = (obj) => {
   const restaurant = {
     fetchMenu: () => obj,
     consumption: [],
-    order: (item) => restaurant.consumption.push(item),
+    order: (request) => restaurant.consumption.push(request),
     pay: () => {
       let sum = 0;
       const consumed = restaurant.consumption;
-      const menuPrices = Object.values(restaurant.fetchMenu());
+      const menuPrices = Object.values(restaurant.fetchMenu()).flat();
 
       consumed.forEach((order) => {
         for (let item = 0; item < menuPrices.length; item += 1) {
