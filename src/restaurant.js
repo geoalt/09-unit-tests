@@ -93,45 +93,37 @@
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const restaurant = {};
-
-const menu = (obj) => obj;
-const ordered = (item) => restaurant.consumption.push(item);
-
-const sumFoodsAndDrinks = () => {
-  let sum = 0;
-  const consumed = restaurant.consumption;
-  const menuPrices = Object.values(restaurant.fetchMenu).flat();
-
-  consumed.forEach((order) => {
-    for (let item = 0; item < menuPrices.length; item += 1) {
-      if (menuPrices[item][order]) {
-        sum += menuPrices[item][order];
-      }
-    }
-  });
-
-  return +(sum * 1.1).toFixed(2);
-};
-
 const createMenu = (obj) => {
-  restaurant.fetchMenu = menu(obj);
-  restaurant.consumption = [];
-  restaurant.order = ordered;
-  restaurant.pay = sumFoodsAndDrinks;
+  const restaurant = {
+    fetchMenu: () => obj,
+    consumption: [],
+    order: (item) => restaurant.consumption.push(item),
+    pay: () => {
+      let sum = 0;
+      const consumed = restaurant.consumption;
+      const menuPrices = Object.values(restaurant.fetchMenu());
 
+      consumed.forEach((order) => {
+        for (let item = 0; item < menuPrices.length; item += 1) {
+          if (menuPrices[item][order]) {
+            sum += menuPrices[item][order];
+          }
+        }
+      });
+
+      return +(sum * 1.1).toFixed(2);
+    },
+  };
   return restaurant;
 };
 
-// createMenu();
+const objetoRetornado = createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
 
-// createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
+objetoRetornado.order('coxinha');
+objetoRetornado.order('agua');
+objetoRetornado.order('coxinha');
+console.log(objetoRetornado.fetchMenu());
+console.log(objetoRetornado);
 
-// restaurant.order('coxinha');
-// restaurant.order('agua');
-// restaurant.order('coxinha');
-// console.log(restaurant.fetchMenu);
-// console.log(restaurant.pay());
-// console.log(restaurant);
-
+console.log(objetoRetornado.pay());
 module.exports = createMenu;
