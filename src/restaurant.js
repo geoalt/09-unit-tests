@@ -117,6 +117,4 @@ const createMenu = (obj) => {
   return restaurant;
 };
 
-const objetoRetornado = createMenu();
-
 module.exports = createMenu;
