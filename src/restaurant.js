@@ -111,7 +111,7 @@ const createMenu = (obj) => {
         }
       });
 
-      return +(sum * 1.1).toFixed(2);
+      return sum * 1.1;
     },
   };
   return restaurant;

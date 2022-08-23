@@ -139,7 +139,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste,
     objetoRetornado.order('coxinha');
     objetoRetornado.order('agua');
     objetoRetornado.order('coxinha');
-    expect(objetoRetornado.pay()).toEqual(12.87);
+    expect(objetoRetornado.pay()).toBeCloseTo(12.87);
   });
   // ```
   // objetoRetornado.order('coxinha');
